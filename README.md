@@ -3,6 +3,20 @@ README
 
 This is a quickie pair of categories on UIAlertView and UIActionSheet which enables you to use blocks to handle the button selection instead of implementing a delegate.
 
+FORK CHANGE
+------------
+* RIButtonItem: RISimpleAction -> RIAction<br>
+* RIButtonItem: add mehtod 
+		
+		+ (id)itemWithLabel: action:
+		
+* UIAlertView+Blocks and UIActionSheet+Blocks add -init method;
+* UIActionSheet+Blocks add methos, 
+		
+		- (NSInteger)addCancelButtonItem:(RIButtonItem *)item;
+		- (NSInteger)addDestructiveButtonItem:(RIButtonItem *)item;
+		
+
 HOW IT WORKS
 ------------
 
