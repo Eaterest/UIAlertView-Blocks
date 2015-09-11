@@ -10,19 +10,19 @@
 
 @implementation RIButtonItem
 
-+ (id)item
++ (instancetype)item
 {
     return [self new];
 }
 
-+ (id)itemWithLabel:(NSString *)inLabel
++ (instancetype)itemWithLabel:(NSString *)inLabel
 {
     RIButtonItem *newItem = [self item];
     newItem.label = inLabel;
     return newItem;
 }
 
-+ (id)itemWithLabel:(NSString *)inLabel action:(RIAction)action
++ (instancetype)itemWithLabel:(NSString *)inLabel action:(RIAction)action
 {
     RIButtonItem *newItem = [self itemWithLabel:inLabel];
     newItem.action = action;
