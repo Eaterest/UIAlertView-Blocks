@@ -6,12 +6,12 @@ This is a quickie pair of categories on UIAlertView and UIActionSheet which enab
 FORK CHANGE
 ------------
 * RIButtonItem: RISimpleAction -> RIAction<br>
-* RIButtonItem: add mehtod 
+* RIButtonItem: add method 
 		
-		+ (id)itemWithLabel: action:
+		+ (instancetype)itemWithLabel:(NSString *)inLabel action:(RIAction)action
 		
 * UIAlertView+Blocks and UIActionSheet+Blocks add -init method;
-* UIActionSheet+Blocks add methos, 
+* UIActionSheet+Blocks add method, 
 		
 		- (NSInteger)addCancelButtonItem:(RIButtonItem *)item;
 		- (NSInteger)addDestructiveButtonItem:(RIButtonItem *)item;
