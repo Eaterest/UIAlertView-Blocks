@@ -13,7 +13,16 @@ static const void *RI_BUTTON_ASS_KEY = &RI_BUTTON_ASS_KEY;
 
 @implementation UIAlertView (Blocks)
 
--(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItemsArray:(NSArray *)inOtherButtonItemsArray
+// Add by Weever
+- (instancetype)init
+{
+    if (self = [self initWithTitle:nil message:nil cancelButtonItem:nil otherButtonItemsArray:nil]) {
+    }
+    return self;
+}
+// Add by Weever
+
+- (instancetype)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItemsArray:(NSArray *)inOtherButtonItemsArray
 {
     self = [self initWithTitle:inTitle message:inMessage delegate:self cancelButtonTitle:inCancelButtonItem.label otherButtonTitles:nil];
 
@@ -38,7 +47,7 @@ static const void *RI_BUTTON_ASS_KEY = &RI_BUTTON_ASS_KEY;
     return self;
 }
 
--(id)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ... 
+- (instancetype)initWithTitle:(NSString *)inTitle message:(NSString *)inMessage cancelButtonItem:(RIButtonItem *)inCancelButtonItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ...
 {
     NSMutableArray *buttonsArray = [NSMutableArray array];
 

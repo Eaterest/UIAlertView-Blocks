@@ -14,7 +14,16 @@ static const void *RI_DISMISSAL_ACTION_KEY = &RI_DISMISSAL_ACTION_KEY;
 
 @implementation UIActionSheet (Blocks)
 
--(id)initWithTitle:(NSString *)inTitle cancelButtonItem:(RIButtonItem *)inCancelButtonItem destructiveButtonItem:(RIButtonItem *)inDestructiveItem otherButtonItemsArray:(NSArray *)inOtherButtonItems {
+// Add by Weever
+- (instancetype)init
+{
+    if (self = [self initWithTitle:nil cancelButtonItem:nil destructiveButtonItem:nil otherButtonItems:nil]) {
+    }
+    return self;
+}
+// Add by Weever
+
+- (instancetype)initWithTitle:(NSString *)inTitle cancelButtonItem:(RIButtonItem *)inCancelButtonItem destructiveButtonItem:(RIButtonItem *)inDestructiveItem otherButtonItemsArray:(NSArray *)inOtherButtonItems {
     if((self = [self initWithTitle:inTitle delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil]))
     {
         NSMutableArray *buttonsArray = [NSMutableArray array];
@@ -44,7 +53,7 @@ static const void *RI_DISMISSAL_ACTION_KEY = &RI_DISMISSAL_ACTION_KEY;
     return self;
 }
 
--(id)initWithTitle:(NSString *)inTitle cancelButtonItem:(RIButtonItem *)inCancelButtonItem destructiveButtonItem:(RIButtonItem *)inDestructiveItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ...
+- (instancetype)initWithTitle:(NSString *)inTitle cancelButtonItem:(RIButtonItem *)inCancelButtonItem destructiveButtonItem:(RIButtonItem *)inDestructiveItem otherButtonItems:(RIButtonItem *)inOtherButtonItems, ...
 {
     NSMutableArray *buttonsArray = [NSMutableArray array];
 
@@ -74,13 +83,37 @@ static const void *RI_DISMISSAL_ACTION_KEY = &RI_DISMISSAL_ACTION_KEY;
 	return buttonIndex;
 }
 
-- (void)setDismissalAction:(RISimpleAction)dismissalAction
+// Add by Weever
+- (NSInteger)addCancelButtonItem:(RIButtonItem *)item
+{
+    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
+    
+    NSInteger buttonIndex = [self addButtonWithTitle:item.label];
+    self.cancelButtonIndex = buttonIndex;
+    [buttonsArray addObject:item];
+    
+    return buttonIndex;
+}
+
+- (NSInteger)addDestructiveButtonItem:(RIButtonItem *)item
+{
+    NSMutableArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
+    
+    NSInteger buttonIndex = [self addButtonWithTitle:item.label];
+    self.destructiveButtonIndex = buttonIndex;
+    [buttonsArray addObject:item];
+    
+    return buttonIndex;
+}
+// Add by Weever
+
+- (void)setDismissalAction:(RIAction)dismissalAction
 {
     objc_setAssociatedObject(self, RI_DISMISSAL_ACTION_KEY, nil, OBJC_ASSOCIATION_COPY);
     objc_setAssociatedObject(self, RI_DISMISSAL_ACTION_KEY, dismissalAction, OBJC_ASSOCIATION_COPY);
 }
 
-- (RISimpleAction)dismissalAction
+- (RIAction)dismissalAction
 {
     return objc_getAssociatedObject(self, RI_DISMISSAL_ACTION_KEY);
 }
