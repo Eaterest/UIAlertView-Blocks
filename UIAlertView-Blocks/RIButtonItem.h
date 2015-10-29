@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^RIAction)();
+typedef void (^RIAction)(id sender);
 
 @interface RIButtonItem : NSObject
 

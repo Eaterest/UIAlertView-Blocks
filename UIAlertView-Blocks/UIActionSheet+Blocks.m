@@ -127,12 +127,12 @@ static const void *RI_DISMISSAL_ACTION_KEY = &RI_DISMISSAL_ACTION_KEY;
         NSArray *buttonsArray = objc_getAssociatedObject(self, RI_BUTTON_ASS_KEY);
         RIButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
         if(item.action)
-            item.action();
+            item.action(actionSheet);
     }
     
     if (self.dismissalAction)
     {
-        self.dismissalAction();
+        self.dismissalAction(actionSheet);
     }
 
     objc_setAssociatedObject(self, RI_BUTTON_ASS_KEY, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);

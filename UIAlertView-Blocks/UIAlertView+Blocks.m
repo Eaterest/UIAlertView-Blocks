@@ -95,7 +95,7 @@ static const void *RI_BUTTON_ASS_KEY = &RI_BUTTON_ASS_KEY;
 		RIButtonItem *item = [buttonsArray objectAtIndex:buttonIndex];
 
 		if (item.action) {
-			item.action();
+			item.action(alertView);
 		}
 	}
 	

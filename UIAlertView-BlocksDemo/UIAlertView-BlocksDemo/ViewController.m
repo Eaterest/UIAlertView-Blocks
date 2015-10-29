@@ -35,7 +35,7 @@
 - (void)testAlert
 {
     RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:@"取消"];
-    RIButtonItem *OKItem = [RIButtonItem itemWithLabel:@"确定" action:^{
+    RIButtonItem *OKItem = [RIButtonItem itemWithLabel:@"确定" action:^(UIAlertView *sender) {
         NSLog(@"确定");
     }];
 //    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Test" message:@"" cancelButtonItem:cancelItem otherButtonItems:OKItem, nil];
@@ -54,15 +54,15 @@
 - (void)testActionSheet
 {
     /*RIButtonItem *cancelItem = [RIButtonItem itemWithLabel:@"取消"];
-     RIButtonItem *OKItem = [RIButtonItem itemWithLabel:@"确定" action:^{
+     RIButtonItem *OKItem = [RIButtonItem itemWithLabel:@"确定" action:^(id sender) {
      DLog(@"确定");
      }];
-     RIButtonItem *deleteItem = [RIButtonItem itemWithLabel:@"删除" action:^{
+     RIButtonItem *deleteItem = [RIButtonItem itemWithLabel:@"删除" action:^(id sender) {
      DLog(@"删除");
      }];
      UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil cancelButtonItem:cancelItem destructiveButtonItem:deleteItem otherButtonItems:OKItem, nil];
      [actionSheet showInView:self.view];
-     actionSheet.dismissalAction = ^{
+     actionSheet.dismissalAction = ^(id sender) {
      DLog(@"dismissal");
      };*/
     
@@ -70,7 +70,7 @@
     
     UIActionSheet *sheet = [[UIActionSheet alloc] init];
     for (NSString *name in names) {
-        RIButtonItem *item = [RIButtonItem itemWithLabel:name action:^{
+        RIButtonItem *item = [RIButtonItem itemWithLabel:name action:^(id sender) {
             NSLog(@"name %@", name);
         }];
         [sheet addButtonItem:item];
@@ -81,16 +81,16 @@
     //    sheet.cancelButtonIndex = [sheet addButtonWithTitle:@"取消"];
     //    sheet.destructiveButtonIndex = [sheet addButtonWithTitle:@"删除"];
     
-    [sheet addCancelButtonItem:[RIButtonItem itemWithLabel:@"取消" action:^{
+    [sheet addCancelButtonItem:[RIButtonItem itemWithLabel:@"取消" action:^(id sender) {
         NSLog(@"cancel");
     }]];
-    [sheet addDestructiveButtonItem:[RIButtonItem itemWithLabel:@"删除" action:^{
+    [sheet addDestructiveButtonItem:[RIButtonItem itemWithLabel:@"删除" action:^(id sender) {
         NSLog(@"delete");
     }]];
     
     
     [sheet showInView:self.view];
-    sheet.dismissalAction = ^{
+    sheet.dismissalAction = ^(id sender) {
         NSLog(@"dismissal");
     };
 }
